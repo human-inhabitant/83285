@@ -1,8 +1,30 @@
 {
-  "name": "MEAN",
+  "name": "83285",
   "version": "0.0.1",
   "dependencies": {
     "express": "latest",
     "grunt": "latest"
-  }
+  },
+  "description": "Just me messing with an ancient book... :metal:",
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/human-inhabitant/83285.git"
+  },
+  "keywords": [
+    "Mongo",
+    "Express",
+    "Angular",
+    "Node"
+  ],
+  "author": "human-inhabitant",
+  "license": "copyleft-next-0.3.1",
+  "bugs": {
+    "url": "https://github.com/human-inhabitant/83285/issues"
+  },
+  "homepage": "https://github.com/human-inhabitant/83285#readme"
 }
