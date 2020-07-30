@@ -2,8 +2,9 @@
   "name": "83285",
   "version": "0.0.1",
   "dependencies": {
-    "express": "latest",
-    "grunt": "latest"
+    "connect": "^3.7.0",
+    "express": "^4.17.1",
+    "grunt": "^1.2.1"
   },
   "description": "Just me messing with an ancient book... :metal:",
   "main": "index.js",
