@@ -1,12 +1,13 @@
 'use strict';
 
-const express = require( 'express' );
-const morgan = require( 'morgan' );
 const bodyParser = require( 'body-parser' );
 const compress = require( 'compression' );
-const methodOverride = require( 'method-override' );
-const session = require( 'express-session' );
 const ejs = require( 'ejs' );
+const express = require( 'express' );
+const methodOverride = require( 'method-override' );
+const morgan = require( 'morgan' );
+const session = require( 'express-session' );
+
 const config = require( './config' );
 
 module.exports = function() {
@@ -35,6 +36,7 @@ module.exports = function() {
   app.use( express.static( './public' ) );
 
   require( '../app/routes/index.server.routes' )( app );
+  require( '../app/routes/users.server.routes' )( app );
 
   return app;
 };

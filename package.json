@@ -10,7 +10,9 @@
     "express-session": "^1.17.1",
     "grunt": "^1.2.1",
     "method-override": "^3.0.0",
-    "morgan": "^1.10.0"
+    "mongoose": "^5.9.27",
+    "morgan": "^1.10.0",
+    "passport": "^0.4.1"
   },
   "description": "Just me messing with an ancient book... :metal:",
   "main": "index.js",
