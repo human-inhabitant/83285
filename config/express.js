@@ -4,8 +4,10 @@ const bodyParser = require( 'body-parser' );
 const compress = require( 'compression' );
 const ejs = require( 'ejs' );
 const express = require( 'express' );
+const flash = require('connect-flash');
 const methodOverride = require( 'method-override' );
 const morgan = require( 'morgan' );
+const passport = require( 'passport' );
 const session = require( 'express-session' );
 
 const config = require( './config' );
@@ -32,6 +34,10 @@ module.exports = function() {
   app.engine('html', ejs.renderFile );
   app.set( 'views', './app/views' );
   app.set( 'view engine', 'ejs' );
+
+  app.use( flash() );
+  app.use( passport.initialize() );
+  app.use( passport.session() );
 
   app.use( express.static( './public' ) );
 

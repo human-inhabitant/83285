@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <title><%= title %></title>
+    </head>
+    <body>
+        <img src="/img/logo.png" alt="Logo" />
+        <hr />
+        <% for( const i in messages ) { %>
+            <div class="flash"><%= messages[i] %></div>
+        <% } %>
+        <form action="/signin" method="post">
+            <div>
+                <label>Username:</label>
+                <input type="text" name="username" />
+            </div>
+            <div>
+                <label>Password:</label>
+                <input type="password" name="password" />
+            </div>
+            <div>
+                <input type="submit" value="Sign In" />
+            </div>
+        </form>
+        <hr />
+    </body>
+</html>

@@ -1,5 +1,6 @@
 'use strict';
 
+const crypto = require( 'crypto' );
 const mongoose = require( 'mongoose' );
 const Schema = mongoose.Schema;
 
@@ -9,7 +10,7 @@ const UserSchema = new Schema({
   email: {
     type: String,
     index: true,
-    match: /.+\@.+\..+/
+    match: [/.+\@.+\..+/, 'Please fill a valid e-mail address']
   },
   role: {
     type: String,
@@ -19,17 +20,26 @@ const UserSchema = new Schema({
     type: String,
     trim: true,
     unique: true,
-    required: true
+    required: 'Username is required'
   },
   password: {
     type: String,
     validate: [
       function( password ) {
-        return password.length >= 6;
+        return password && password.length > 6;
       },
       'Password should be longer'
     ]
   },
+  salt: {
+    type: String
+  },
+  provider: {
+    type: String,
+    required: 'Provider is required'
+  },
+  providerId: String,
+  providerData: {},
   website: {
     type: String,
     get: function( url ) {
@@ -50,6 +60,15 @@ const UserSchema = new Schema({
 });
 
 UserSchema
+  .pre( 'save', function( next ) {
+    if ( this.password ) {
+      this.salt = new Buffer( crypto.randomBytes( 16 ).toString( 'base64' ), 'base64' );
+      this.password = this.hashPassword( this.password );
+    }
+    next();
+});
+
+UserSchema
   .statics
   .findOneByUsername = function( username, callback ) {
     this.findOne({
@@ -60,9 +79,33 @@ UserSchema
 };
 
 UserSchema
+  .statics
+  .findUniqueUsername = function( username, suffix, callback ) {
+    const _this = this;
+    const possibleUsername = username + ( suffix || '' );
+    _this.findOne({ username: possibleUsername }, function( err, user ) {
+      if ( !err ) {
+        if ( !user ) {
+          callback( possibleUsername );
+        } else {
+          return _this.findUniqueUsername( username, ( suffix || 0 ) + 1, callback );
+        }
+      } else {
+        callback( null );
+      }
+    });
+};
+
+UserSchema
   .methods
   .authenticate = function( password ) {
-    return this.password === password;
+    return this.password === this.hashPassword( password );
+};
+
+UserSchema
+  .methods
+  .hashPassword = function( password ) {
+    return crypto.pbkdf2Sync( password, this.salt, 10000, 64, 'sha512' ).toString( 'base64' );
 };
 
 UserSchema

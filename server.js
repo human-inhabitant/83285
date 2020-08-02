@@ -8,6 +8,9 @@ const db = mongoose();
 const express = require( './config/express' );
 const app = express();
 
+let passport = require( './config/passport' );
+passport = passport();
+
 app.listen( 3000 );
 module.exports = app;
 
