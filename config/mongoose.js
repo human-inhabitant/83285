@@ -14,5 +14,6 @@ module.exports = function() {
       console.info( 'Mongo connected...' );
     });
   require( '../app/models/user.server.model' );
+  require( '../app/models/article.server.model' );
   return db;
 };

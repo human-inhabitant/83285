@@ -2,7 +2,7 @@
 
 const mainApplicationModuleName = 'mean';
 
-const mainApplicationModule = angular.module( mainApplicationModuleName, ['ngRoute', 'users', 'example'] );
+const mainApplicationModule = angular.module( mainApplicationModuleName, ['ngResource', 'ngRoute', 'users', 'example', 'articles'] );
 
 mainApplicationModule
   .config(['$locationProvider', function( $locationProvider ) {
@@ -14,4 +14,5 @@ angular
   .element( document )
   .ready( function() {
     angular.bootstrap( document, [mainApplicationModuleName] );
-});
+  })
+;

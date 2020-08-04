@@ -6,16 +6,6 @@
         <title><%= title %></title>
     </head>
     <body>
-        <hr />
-        <section>
-            <% if ( user ) { %>
-                <a href="/signout">Sign out</a>
-            <% } else { %>
-                <a href="/signup">Signup</a>
-                <a href="/signin">Signin</a>
-            <% } %>
-        </section>
-        <hr />
         <section ng-view></section>
 
         <script>
@@ -24,6 +14,12 @@
 
         <script src="/lib/angular/angular.min.js"></script>
         <script src="/lib/angular-route/angular-route.min.js"></script>
+        <script src="/lib/angular-resource/angular-resource.min.js"></script>
+
+        <script src="/articles/articles.client.module.js"></script>
+        <script src="/articles/controllers/articles.client.controller.js"></script>
+        <script src="/articles/services/articles.client.service.js"></script>
+        <script src="/articles/config/articles.client.routes.js"></script>
 
         <script src="/example/example.client.module.js"></script>
         <script src="/example/controllers/example.client.controller.js"></script>
