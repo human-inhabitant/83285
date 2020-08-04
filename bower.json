@@ -1,0 +1,8 @@
+{
+  "name": "83285",
+  "version": "0.6.7",
+  "dependencies": {
+    "angular": "~1.2.32",
+    "angular-route": "~1.2.32"
+  }
+}
