@@ -14,11 +14,18 @@
     "mongoose": "^5.9.27",
     "morgan": "^1.10.0",
     "passport": "^0.4.1",
-    "passport-local": "^1.0.0"
+    "passport-local": "^1.0.0",
+    "socket.io": "^2.3.0"
   },
   "description": "Just me messing with an ancient book... :metal:",
   "main": "index.js",
-  "devDependencies": {},
+  "devDependencies": {
+    "karma": "^5.1.1",
+    "karma-jasmine": "^3.3.1",
+    "karma-phantomjs-launcher": "^1.0.4",
+    "should": "^13.2.3",
+    "supertest": "^4.0.2"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
